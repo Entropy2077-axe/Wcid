@@ -1,61 +1,30 @@
-.schedule-view {
-  padding: var(--space-4);
-}
-
-.date-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--space-5);
-  padding: var(--space-3) var(--space-2);
-}
-
-.date-nav-btn {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  color: var(--color-text-secondary);
-  border-radius: var(--radius-md);
-  transition: background 0.15s, color 0.15s;
-}
-
-.date-nav-btn:hover {
-  background: var(--color-border-subtle);
-  color: var(--color-text);
-}
-
-.date-nav-btn:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-.date-nav-label {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.schedule-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  padding: 64px var(--space-4);
-  color: var(--color-text-muted);
-}
-
-.empty-state p {
-  margin: 0;
-  font-size: 15px;
-}
+.schedule-view { padding: 16px; }
+.calendar-toolbar { display: flex; flex-wrap: wrap; align-items: center; margin: -4px; }
+.calendar-toolbar > * { margin: 4px; }
+.calendar-toolbar h2 { font-size: 20px; font-weight: 550; margin-right: auto; }
+.calendar-controls { display: flex; }
+.calendar-toolbar button, .calendar-toolbar input { min-height: 44px; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); border-radius: var(--radius-sm); padding: 8px 12px; }
+.calendar-toolbar button[aria-pressed=true] { background: var(--color-border-subtle); font-weight: 600; }
+.calendar-hint { font-size: 12px; color: var(--color-text-secondary); margin: 16px 0; }
+.calendar-scroll { overflow: auto; height: 68vh; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); position: relative; }
+.calendar-grid.week { min-width: 700px; }
+.calendar-days { display: flex; position: sticky; top: 0; z-index: 5; background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
+.time-corner { width: 58px; flex-shrink: 0; padding: 20px 8px; font-size: 11px; color: var(--color-text-muted); }
+.day-heading { flex: 1; min-width: 0; text-align: center; padding: 8px 0 0; border-left: 1px solid var(--color-border-subtle); }
+.day-heading span { display: block; font-size: 11px; color: var(--color-text-secondary); }
+.day-heading strong { font-size: 20px; font-weight: 500; }
+.day-heading button { display: block; width: 100%; height: 44px; border: none; background: none; color: var(--color-text-secondary); }
+.day-heading.is-today { background: var(--color-event-blue); color: var(--color-accent); }
+.calendar-body { display: flex; height: 1536px; }
+.time-axis { width: 58px; flex-shrink: 0; position: relative; background: var(--color-surface); }
+.time-axis span { position: absolute; right: 8px; font-size: 10px; color: var(--color-text-secondary); }
+.day-column { flex: 1; min-width: 0; position: relative; border-left: 1px solid var(--color-border); background: repeating-linear-gradient(to bottom, transparent 0, transparent 63px, var(--color-border-subtle) 63px, var(--color-border-subtle) 64px); }
+.calendar-event { position: absolute; border: 1px solid var(--color-surface); border-left: 3px solid var(--priority-medium); border-radius: 5px; padding: 5px; overflow: hidden; color: var(--color-text); background: var(--color-event-blue); text-align: left; z-index: 1; }
+.calendar-event strong { display: block; font-size: 12px; font-weight: 550; overflow-wrap: anywhere; }
+.calendar-event small, .calendar-event span { display: block; font-size: 10px; margin-top: 4px; }
+.calendar-event.tone-1 { background: var(--color-event-green); border-left-color: var(--priority-low); }
+.calendar-event.tone-2 { background: var(--color-event-purple); border-left-color: var(--priority-high); }
+.now-line { position: absolute; height: 2px; background: var(--color-danger); width: 100%; z-index: 2; pointer-events: none; }
+.empty-state { padding: 64px 16px; text-align: center; color: var(--color-text-secondary); }
+@media (min-width: 960px) { .schedule-view { padding: 0; } .calendar-scroll { height: calc(100vh - 265px); min-height: 350px; } }
+.calendar-event { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }

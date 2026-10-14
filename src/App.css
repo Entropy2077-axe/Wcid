@@ -1,52 +1,34 @@
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  max-width: 680px;
-  margin: 0 auto;
-  position: relative;
+.app { min-height: 100vh; }
+.sidebar, .workspace-heading, .day-summary { display: none; }
+.app-main { min-width: 0; padding-bottom: 88px; }
+.fab { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 18px; background: var(--color-accent); color: var(--color-accent-text); border: 0; font-size: 32px; box-shadow: var(--shadow-card); z-index: 100; }
+@media (min-width: 960px) {
+  .app { display: grid; grid-template-columns: 224px minmax(0, 1fr); }
+  .sidebar { display: flex; flex-direction: column; padding: 38px 20px 24px; background: var(--color-sidebar); border-right: 1px solid var(--color-border); height: 100vh; position: sticky; top: 0; }
+  .brand { font-size: 28px; font-weight: 650; letter-spacing: -1px; padding: 0 12px; }
+  .brand span { display: block; font-size: 12px; font-weight: 400; letter-spacing: 0; margin-top: 8px; color: var(--color-text-secondary); }
+  .desktop-add { margin: 32px 0 24px; background: var(--color-accent); color: var(--color-accent-text); border: 0; border-radius: var(--radius-sm); min-height: 44px; font-size: 14px; }
+  .sidebar nav button { display: flex; align-items: center; width: 100%; min-height: 46px; border: 0; background: none; color: var(--color-text-secondary); text-align: left; padding: 12px; border-radius: var(--radius-sm); margin-bottom: 6px; font-size: 14px; }
+  .sidebar nav .selected { background: var(--color-border-subtle); color: var(--color-text); font-weight: 600; }
+  .sidebar nav span { margin-left: auto; font-size: 12px; }
+  .sidebar-note { margin-top: auto; padding: 24px 12px; font-size: 13px; line-height: 2; color: var(--color-text-muted); }
+  .sidebar > small { padding: 12px; color: var(--color-text-secondary); font-size: 11px; }
+  .workspace { padding: 40px 40px 0; min-width: 0; }
+  .mobile-header, .fab { display: none; }
+  .workspace-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+  .workspace-heading p { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 8px; }
+  .workspace-heading h1 { font-size: 30px; font-weight: 600; letter-spacing: -1px; margin: 0; }
+  .workspace-heading > span { font-size: 13px; color: var(--color-text-secondary); }
+  .content-layout { display: grid; grid-template-columns: minmax(0,1fr) 244px; column-gap: 36px; }
+  .task-view { padding: 0 !important; }
+  .day-summary { display: block; border-left: 1px solid var(--color-border); padding-left: 28px; }
+  .day-summary h2 { font-size: 18px; font-weight: 500; }
+  .day-summary p { font-size: 13px; line-height: 1.9; color: var(--color-text-secondary); }
+  .day-summary .eyebrow { font-size: 10px; letter-spacing: 2px; }
+  .summary-line { height: 1px; background: var(--color-border); margin: 24px 0; }
+  .day-summary button { display: block; text-align: left; width: 100%; padding: 12px 0; border: 0; background: none; color: var(--color-text); min-height: 44px; }
+  .day-summary small { display: block; color: var(--color-text-secondary); margin-bottom: 6px; }
+  .day-summary strong { font-size: 14px; font-weight: 500; }
+  .day-summary .view-calendar { color: var(--color-accent); margin-top: 20px; }
 }
-
-.app-main {
-  flex: 1;
-  overflow-y: auto;
-  padding-bottom: 88px;
-}
-
-.fab {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  color: var(--color-accent-text);
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(74, 143, 212, 0.4);
-  transition: background 0.15s, transform 0.15s;
-  z-index: 100;
-}
-
-.fab:hover {
-  background: var(--color-accent-hover);
-  transform: scale(1.05);
-}
-
-.fab:active {
-  transform: scale(0.95);
-}
-
-.fab:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-
-@media (min-width: 680px) {
-  .fab {
-    right: calc(50vw - 340px + 24px);
-  }
-}
+@media (min-width: 1500px) { .workspace { padding-left: 64px; padding-right: 64px; } }

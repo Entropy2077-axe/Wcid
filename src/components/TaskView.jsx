@@ -2,7 +2,7 @@ import useStore from '../store.js'
 import TaskItem from './TaskItem.jsx'
 import './TaskView.css'
 
-const today = () => new Date().toISOString().slice(0, 10)
+import { localDate as today } from '../model.js'
 
 function groupTasks(tasks) {
   const t = today()
@@ -36,12 +36,14 @@ export default function TaskView({ onEdit }) {
     )
   }
 
-  const groups = groupTasks(tasks)
+  const rank = { urgent: 0, high: 1, medium: 2, low: 3 }
+  const groups = groupTasks(tasks.filter(t => !t.completed).sort((a,b) => rank[a.priority] - rank[b.priority] || (a.dueDate || '').localeCompare(b.dueDate || '')))
   const sections = [
     { key: 'overdue', label: '已逾期', items: groups.overdue },
     { key: 'today', label: '今天', items: groups.today },
     { key: 'upcoming', label: '即将到来', items: groups.upcoming },
     { key: 'noDate', label: '无截止日期', items: groups.noDate },
+    { key: 'completed', label: '已完成', items: tasks.filter(t => t.completed) },
   ]
 
   return (
