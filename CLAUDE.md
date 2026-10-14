@@ -60,3 +60,5 @@ Schedule: `{ id, type:'schedule', title, date:'YYYY-MM-DD', startTime:'HH:MM', e
 生产预览补充验证：已用旧 version 0 数据启动并编辑成功；确认 schema 升级至 1；等待 service worker 激活后断网刷新，界面与任务仍正常读取。
 
 公开仓库：https://github.com/Entropy2077-axe/Wcid 。默认开发分支为 master；该分支推送触发 Pages。应用地址：https://entropy2077-axe.github.io/Wcid/ 。
+
+GitHub Pages 部署踩坑：空仓库启用 Pages 时 github-pages 环境会预设只允许 main，导致 master 的部署在启动 runner 前被拒绝（无构建日志）。已在该环境的 deployment branch policies 中明确允许 master；保留分支保护，不需要改为所有分支可部署。
